@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shop</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+
+<body style="background-image: url('static/login.png');">
+    {% csrf_token %}
+    <div class="main">
+        <div class="log">
+            <h1>LOGIN</h1>
+        </div>
+        <div class="f">
+            <form action="" method="post">
+                <div>
+                    <br><br><br>
+                <input type="text" name="uname" id="" placeholder="User Name"><br><br>
+                <input type="password" name="password" id="" placeholder="Password"><br><br>
+                <input type="submit" value="Login"><br>
+            </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

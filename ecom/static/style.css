@@ -13,6 +13,8 @@ body{
 .log{
     color: aliceblue;
 }
-.f{
-
+.form{
+    width: 30%;
+    margin: auto;
+    margin-top: 25vh;
 }

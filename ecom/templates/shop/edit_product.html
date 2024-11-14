@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Products</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body style="background-image: url('static/ebg.jpg');">
+    <div class="form">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="id" id="" placeholder="Product Id" required style="width: 300px; height: 40px;" value="{{data.pid}}"><br><br>
+        <input type="text" name="name" id="" placeholder="Product Name" required style="width: 300px; height: 40px;" value="{{data.name}}"><br><br>
+        <input type="text" name="dis" id="" placeholder="Product Discription" required style="width: 300px; height: 40px;" value="{{data.dis}}"><br><br>
+        <input type="number" name="price" id="" placeholder="Product Price" required style="width: 300px; height: 40px;" value="{{data.price}}"><br><br>
+        <input type="number" name="offprice" id="" placeholder="Offer Price" required style="width: 300px; height: 40px;" value="{{data.offer_price}}"><br><br>
+        <input type="number" name="stock" id="" placeholder="Number of Stocks" required style="width: 300px; height: 40px;" value="{{data.stock}}"><br><br>
+        <img src="{{data.img.url}}" alt="" style="height: 300; width: 300px;">
+        <input type="file" name="img" id="" required>
+        <input type="submit" value="update"><br>
+    </form>
+</div>
+</body>
+</html>

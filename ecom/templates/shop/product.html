@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Products</title>
     {% load static%}
     <link rel="stylesheet" href="{% static 'style.css'%}">
 </head>
+
 <body style="background-image: url('static/bb.jpg');">
     <div class="form">
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="text" name="id" id="" placeholder="Product Id" style="width: 300px; height: 40px;"><br><br>
-        <input type="text" name="name" id="" placeholder="Product Name" style="width: 300px; height: 40px;"><br><br>
-        <input type="text" name="dis" id="" placeholder="Product Discription" style="width: 300px; height: 40px;"><br><br>
-        <input type="number" name="price" id="" placeholder="Product Price" style="width: 300px; height: 40px;"><br><br>
-        <input type="number" name="offprice" id="" placeholder="Offer Price" style="width: 300px; height: 40px;"><br><br>
-        <input type="number" name="stock" id="" placeholder="Number of Stocks" style="width: 300px; height: 40px;"><br><br>
-        <input type="file" name="img" id="">
-        <input type="submit" value="Add"><br>
-    </form>
-</div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="id" id="" placeholder="Product Id" required style="width: 300px; height: 40px;"><br><br>
+            <input type="text" name="name" id="" placeholder="Product Name" required style="width: 300px; height: 40px;"><br><br>
+            <input type="text" name="dis" id="" placeholder="Product Discription" required style="width: 300px; height: 40px;"><br><br>
+            <input type="number" name="price" id="" placeholder="Product Price" required style="width: 300px; height: 40px;"><br><br>
+            <input type="number" name="offprice" id="" placeholder="Offer Price" required style="width: 300px; height: 40px;"><br><br>
+            <input type="number" name="stock" id="" placeholder="Number of Stocks" required style="width: 300px; height: 40px;"><br><br>
+            <input type="file" name="img" id="" required>
+            <input type="submit" value="Add"><br>
+        </form>
+    </div>
 </body>
+
 </html>

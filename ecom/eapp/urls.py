@@ -6,5 +6,6 @@ urlpatterns=[
     path('logout',views.eapp_logout),
     path('shop_home',views.eapp_home),
     path('shop_product',views.product),
+    path('shop_edit/<id>',views.edit_pro),
     
 ]

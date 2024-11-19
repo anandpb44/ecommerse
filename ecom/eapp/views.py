@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .models import Product
+from .models import *
 import os
 from django.contrib.auth.models import User
 # Create your views here.
@@ -114,3 +114,16 @@ def user_home(req):
     if 'user' in req.session:
         product=Product.objects.all()
         return render(req,'user/user_home.html',{'products':product})
+def user_view(req,id):
+    data=Product.objects.get(pk=id)
+    return render(req,'user/view_product.html',{'data':data})
+#------------Add to cart----------
+def add_cart(req,id):
+    pro=Product.objects.get(pk=id)
+    user=User.objects.get(username=req.session['user'])
+    data=Cart.objects.create(pro=pro,user=user,qty=1)
+    data.save()
+    return redirect(view_cart)
+
+def view_cart(req):
+    return render(req,'user/cart.html')

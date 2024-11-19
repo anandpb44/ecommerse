@@ -10,6 +10,9 @@ urlpatterns=[
     path('shop_delete/<pid>',views.delete),
     #---user--------
     path('user_reg',views.register),
-    path('user_home',views.user_home)
+    path('user_home',views.user_home),
+    path('user_view/<id>',views.user_view),
+    path('addcart/<id>',views.add_cart),
+    path('viewcart',views.view_cart),
     
 ]

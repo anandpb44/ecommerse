@@ -121,9 +121,40 @@ def user_view(req,id):
 def add_cart(req,id):
     pro=Product.objects.get(pk=id)
     user=User.objects.get(username=req.session['user'])
-    data=Cart.objects.create(pro=pro,user=user,qty=1)
-    data.save()
+    try:
+        cart=Cart.objects.get(pro=pro,user=user)
+        cart.qty+=1
+        cart.save()
+    except:
+        data=Cart.objects.create(pro=pro,user=user,qty=1)
+        data.save()
     return redirect(view_cart)
 
 def view_cart(req):
-    return render(req,'user/cart.html')
+    user=User.objects.get(username=req.session['user'])
+    data=Cart.objects.filter(user=user)
+    return render(req,'user/cart.html',{'cart':data})
+def qty_incri(req,cid):
+    data=Cart.objects.get(pk=cid)
+    if data.pro.stock > data.qty:
+        data.qty+=1
+        data.save()
+    return redirect(view_cart)
+def qty_dec(req,cid):
+    data=Cart.objects.get(pk=cid)
+    data.qty-=1
+    data.save()
+    if data.qty==0:
+        data.delete()
+    return redirect(view_cart)
+
+def user_buypro(req,pid):
+    product=Product.objects.get(pk=pid)
+    user=User.objects.get(username=req.session['user'])
+    qty=1
+    price=product.offer_price
+    buy=Buy.objects.create(pro=product,user=user,qty=qty,t_price=price)
+    return redirect(user_bookings)
+
+def user_bookings(req):
+    return render(req,'user/bookings.html')

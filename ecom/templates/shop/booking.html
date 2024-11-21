@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <h1>user booking details</h1>
+    <div class="container">
+        <div class="row">
+            {%for i in bookings %}
+            <div class="col-lg-3">
+                <div class="card mt-5">
+                    <img class="card-img-top" src="{{i.pro.img.url}}" alt="" height="350px">
+                    <div class="card-body mt-5">
+                        <p class="card-title">Total:{{i.t_price}}</p>
+                        <p class="card-title">qty:{{i.qty}}</p>
+                        <h4 class="card-title">user details </h4>
+                        <p class="card-text">   name:{{i.user.first_name}} <br>
+                            email:{{i.user.email}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

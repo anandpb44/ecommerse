@@ -93,6 +93,10 @@ def delete(req,pid):
     data.delete()
     return redirect(eapp_home)
 
+def bookings(req):
+    bookings=Buy.objects.all()
+    return render(req,'shop/booking.html',{'bookings':bookings})
+
 #********************************
 
 #--------------USER-----------------
@@ -154,7 +158,17 @@ def user_buypro(req,pid):
     qty=1
     price=product.offer_price
     buy=Buy.objects.create(pro=product,user=user,qty=qty,t_price=price)
+    buy.save()
+    return redirect(user_bookings)
+
+def cart_buy(req,cid):
+    cart=Cart.objects.get(pk=cid)
+    price=cart.qty*cart.pro.offer_price
+    buy=Buy.objects.create(pro=cart.pro,user=cart.user,qty=cart.qty,t_price=price)
+    buy.save()
     return redirect(user_bookings)
 
 def user_bookings(req):
-    return render(req,'user/bookings.html')
+    user=User.objects.get(username=req.session['user'])
+    booking=Buy.objects.filter(user=user)[::-1]
+    return render(req,'user/bookings.html',{'booking':booking})

@@ -1,0 +1,14 @@
+body{
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+.re{
+    width: 20%;
+    margin: auto;
+    height: 35vh;
+    text-align: center;
+    margin-top: 35vh;
+    border: solid black;
+}

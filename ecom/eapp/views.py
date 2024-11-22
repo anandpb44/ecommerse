@@ -4,6 +4,8 @@ from django.contrib import messages
 from .models import *
 import os
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 
 #------------LOGIN--------------
@@ -108,6 +110,7 @@ def register(req):
         try:
             data=User.objects.create_user(first_name=uname,email=email,username=email,password=pswd)
             data.save()
+            send_mail("Registration", "Ypur Registration Is Successful", settings.EMAIL_HOST_USER, [email])
             return redirect(eapp_login)
         except:
             messages.warning(req,'Email Already Exit')
